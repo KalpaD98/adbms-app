@@ -1,6 +1,13 @@
 package com.adbms.app.models.Retailer;
 
-public class Address extends CommonAddress{
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
+public class Address extends CommonAddress {
+    @Getter
+    @Setter
+    @NotBlank(message = "Country cannot be empty")
     private String country;
 }
