@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Update User</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+
+
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Train Ticket System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/index">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tickets">Tickets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">Users</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/trains">Trains</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container my-5">
+    <h3> Update Train</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" method="post" th:action="@{/trains/update/{id}(id=${train.id})}" th:object="${train}">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label" for="name">Name</label> <input class="form-control" id="name"
+                                                                                         placeholder="Name" th:field="*{name}"
+                                                                                         type="text"> <span
+                                class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="type">Type</label> <input class="form-control" id="type"
+                                                                                         placeholder="Type" th:field="*{type}"
+                                                                                         type="text"> <span
+                                class="text-danger" th:errors="*{type}" th:if="${#fields.hasErrors('type')}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="capacity">Capacity</label> <input class="form-control"
+                                                                                                 id="capacity"
+                                                                                                 placeholder="capacity"
+                                                                                                 th:field="*{capacity}"
+                                                                                                 type="text">
+                            <span class="text-danger" th:errors="capacity"
+                                  th:if="${#fields.hasErrors('capacity')}"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <input class="btn btn-primary" type="submit" value="Update Train">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
