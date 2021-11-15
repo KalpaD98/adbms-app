@@ -1,6 +1,8 @@
 package com.adbms.app.controllers;
 
+import com.adbms.app.models.Retailer.Address;
 import com.adbms.app.models.Retailer.Retailer;
+import com.adbms.app.models.Retailer.ShippingAddress;
 import com.adbms.app.repositories.RetailerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,7 @@ public class RetailerController {
     }
 
     @GetMapping("/add-retailer")
-    public String showAddForm(Retailer retailer) {
+    public String showAddForm(Retailer retailer, Address address, ShippingAddress shippingAddress) {
         return "retailer/add-retailer";
     }
 
@@ -58,7 +60,7 @@ public class RetailerController {
 
     @PostMapping("update/{id}")
     public String updateRetailer(@PathVariable("id") String id, @Valid Retailer retailer, BindingResult result,
-                              Model model) {
+                                 Model model) {
         if (result.hasErrors()) {
             retailer.setId(id);
             return "retailer/update-retailer";
@@ -83,5 +85,5 @@ public class RetailerController {
         model.addAttribute("retailers", retailerRepository.findAll());
         return "retailer/retailers";
     }
-    
+
 }

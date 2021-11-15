@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <title>Add Train</title>
+    <title>Add Retailer</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <link crossorigin="anonymous"
@@ -34,8 +34,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Train Ticket System</a>
-        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+        <a class="navbar-brand" href="/">System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
                 data-target="#navbarResponsive"
                 data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -48,45 +49,48 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tickets">Tickets</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
+                    <a class="nav-link" href="/others">Others</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/trains">Trains</a>
+                    <a class="nav-link" href="/trains">Retailers</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container my-5">
-    <h3> Add Train</h3>
+    <h3>Add Retailer</h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
                 <form action="#" method="post" th:action="@{/retailers/add}" th:object="${retailer}">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label class="col-form-label" for="name">Name</label> <input class="form-control" id="name"
-                                                                                         placeholder="Name" th:field="*{name}"
-                                                                                         type="text"> <span
-                                class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span>
+                            <label class="col-form-label" for="name">Name</label>
+                            <input class="form-control" id="name"
+                                   placeholder="Name" th:field="*{name}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{name}"
+                                    th:if="${#fields.hasErrors('name')}">
+                            </span>
                         </div>
 
                         <div class="form-group col-md-8">
-                            <label class="col-form-label" for="type">Type</label>
-                            <select class="form-control" id="type" th:field="*{type}">
-                                <option value="none">Select type</option>
-                                <option th:value="Luxury">Luxury</option>
-                                <option th:value="Semi-Luxury">Semi-Luxury</option>
-                                <option th:value="Normal">Normal</option>
-                            </select>
+                            <label class="col-form-label" for="name">Email</label>
+                            <input class="form-control" id="email"
+                                   placeholder="Email" th:field="*{email}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{email}"
+                                    th:if="${#fields.hasErrors('email')}">
 
-                            <span class="text-danger" th:errors="*{type}" th:if="${#fields.hasErrors('name')}"></span>
+                            </span>
                         </div>
+
+
                         <div class="col-md-6">
-                            <input class="btn btn-primary" type="submit" value="Add Train">
+                            <input class="btn btn-primary" type="submit" value="Add Retailer">
                         </div>
 
                         <div class="form-group col-md-8"></div>
