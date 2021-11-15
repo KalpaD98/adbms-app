@@ -10,4 +10,7 @@ public class Address extends CommonAddress {
     @Setter
     @NotBlank(message = "Country cannot be empty")
     private String country;
+
+    public Address() {
+    }
 }

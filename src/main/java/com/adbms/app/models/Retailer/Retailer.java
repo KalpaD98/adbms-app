@@ -34,10 +34,14 @@ public class Retailer {
 
     @Getter
     @Setter
+    @NotBlank
     private Address address;
 
     @Getter
     @Setter
+    @NotBlank
     private ShippingAddress shippingAddress;
 
+    public Retailer() {
+    }
 }
