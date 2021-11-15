@@ -32,4 +32,12 @@ public class Retailer {
     @Setter
     private String email;
 
+    @Getter
+    @Setter
+    private Address address;
+
+    @Getter
+    @Setter
+    private ShippingAddress shippingAddress;
+
 }
