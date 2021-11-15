@@ -1,4 +1,4 @@
-package com.adbms.app.models;
+package com.adbms.app.models.Retailer;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +12,10 @@ public class Retailer {
     @Setter
     private String id;
 
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
 
 }
