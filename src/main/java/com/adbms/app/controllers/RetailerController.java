@@ -31,17 +31,24 @@ public class RetailerController {
         return "retailer/retailers";
     }
 
+    @GetMapping("/{id}")
+    public String getRetailer(Model model, @PathVariable("id") String id) {
+        model.addAttribute("retailer", retailerRepository.findById(id));
+        return "retailer/view-retailer";
+    }
+
+
     @GetMapping("/add-retailer")
     public String showAddForm(Retailer retailer, Address address, ShippingAddress shippingAddress) {
         return "retailer/add-retailer";
     }
 
     @PostMapping("add")
-    public String addRetailer(@Valid Retailer retailer, BindingResult result, Model model) {
+    public String addRetailer(Retailer retailer, Address address, ShippingAddress shippingAddress, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "retailer/add-retailer";
         }
-
+        //TODO : err
         retailerRepository.save(retailer);
         return "redirect:";
     }

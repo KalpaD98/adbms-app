@@ -52,7 +52,7 @@
                     <a class="nav-link" href="/others">Others</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/trains">Retailers</a>
+                    <a class="nav-link" href="/retailers">Retailers</a>
                 </li>
             </ul>
         </div>
@@ -66,6 +66,7 @@
                 <form action="#" method="post" th:action="@{/retailers/add}" th:object="${retailer}">
                     <div class="row">
                         <div class="form-group col-md-8">
+                            <p class="col-form-label"><b>Manager Details</b></p>
                             <label class="col-form-label" for="name">Name</label>
                             <input class="form-control" id="name"
                                    placeholder="Name" th:field="*{name}"
@@ -87,19 +88,137 @@
 
                             </span>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <p class="col-form-label"><b>Address</b></p>
 
+                            <label class="col-form-label" for="address_country">Country</label>
 
-                        <div class="col-md-6">
-                            <input class="btn btn-primary" type="submit" value="Add Retailer">
+                            <input class="form-control" id="address_country"
+                                   placeholder="Country" th:field="*{address.country}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address.country}"
+                                    th:if="${#fields.hasErrors('address.country')}">
+                            </span>
+
+                            <label class="col-form-label" for="address_street1">Street 1</label>
+
+                            <input class="form-control" id="address_street1"
+                                   placeholder="Street 1" th:field="*{address.street1}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address.street1}"
+                                    th:if="${#fields.hasErrors('address.street1')}">
+                            </span>
+
+                            <label class="col-form-label" for="address_street2">Street 2</label>
+
+                            <input class="form-control" id="address_street2"
+                                   placeholder="Street 2" th:field="*{address.street2}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address.street2}"
+                                    th:if="${#fields.hasErrors('address.street2')}">
+                            </span>
+
+                            <label class="col-form-label" for="address_city">City</label>
+
+                            <input class="form-control" id="address_city"
+                                   placeholder="City" th:field="*{address.city}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address.city}"
+                                    th:if="${#fields.hasErrors('address.city')}">
+                            </span>
+
+                            <label class="col-form-label" for="address_district">District</label>
+
+                            <input class="form-control" id="address_district"
+                                   placeholder="District" th:field="*{address.district}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address.district}"
+                                    th:if="${#fields.hasErrors('address.district')}">
+                            </span>
+
+                            <label class="col-form-label" for="address_zip">Zip</label>
+
+                            <input class="form-control" id="address_zip"
+                                   placeholder="Zip" th:field="*{address.zip}"
+                                   type="number">
+                            <span
+                                    class="text-danger" th:errors="*{address.zip}"
+                                    th:if="${#fields.hasErrors('address.zip')}">
+                            </span>
+
                         </div>
 
-                        <div class="form-group col-md-8"></div>
 
+                        <div class="form-group col">
+                            <p class="col-form-label"><b>Shipping Address</b></p>
+
+                            <label class="col-form-label" for="shippingAddress_street1">Street 1</label>
+
+                            <input class="form-control" id="shippingAddress_street1"
+                                   placeholder="Street 1" th:field="*{shippingAddress.street1}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{shippingAddress.street1}"
+                                    th:if="${#fields.hasErrors('shippingAddress.street1')}">
+                            </span>
+
+                            <label class="col-form-label" for="shippingAddress_street2">Street 2</label>
+
+                            <input class="form-control" id="shippingAddress_street2"
+                                   placeholder="Street 2" th:field="*{shippingAddress.street2}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{shippingAddress.street2}"
+                                    th:if="${#fields.hasErrors('shippingAddress.street2')}">
+                            </span>
+
+                            <label class="col-form-label" for="shippingAddress_city">City</label>
+
+                            <input class="form-control" id="shippingAddress_city"
+                                   placeholder="City" th:field="*{shippingAddress.city}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{shippingAddress.city}"
+                                    th:if="${#fields.hasErrors('shippingAddress.city')}">
+                            </span>
+
+                            <label class="col-form-label" for="shippingAddress_district">District</label>
+
+                            <input class="form-control" id="shippingAddress_district"
+                                   placeholder="District" th:field="*{shippingAddress.district}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{shippingAddress.district}"
+                                    th:if="${#fields.hasErrors('shippingAddress.district')}">
+                            </span>
+
+                            <label class="col-form-label" for="shippingAddress_zip">Zip</label>
+
+                            <input class="form-control" id="shippingAddress_zip"
+                                   placeholder="Zip" th:field="*{shippingAddress.zip}"
+                                   type="number">
+                            <span
+                                    class="text-danger" th:errors="*{shippingAddress.zip}"
+                                    th:if="${#fields.hasErrors('shippingAddress.zip')}">
+                            </span>
+                            <br>
+
+                            <div class="col">
+                                <input class="btn btn-primary" type="submit" value="Add Retailer">
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 </body>
 

@@ -7,5 +7,5 @@ public interface RetailerRepository extends MongoRepository<Retailer, String> {
 
     Retailer getRetailerByEmail(String email);
 
-    Retailer getRetailerByEmailLike(String email); //search
+    Retailer getRetailerByEmailLike(String email);
 }

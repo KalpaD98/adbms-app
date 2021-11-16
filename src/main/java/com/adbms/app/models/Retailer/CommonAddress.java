@@ -30,4 +30,15 @@ public abstract class CommonAddress {
     @Setter
     @NotBlank(message = "Zip cannot be empty")
     private int zip;
+
+    @Override
+    public String toString() {
+        return "CommonAddress{" +
+                "street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", zip=" + zip +
+                '}';
+    }
 }
