@@ -10,10 +10,6 @@ import javax.validation.constraints.NotBlank;
 
 @Document
 public class Address extends CommonAddress {
-    @Id
-    @Getter
-    @Setter
-    private String id;
 
     @Getter
     @Setter
@@ -23,11 +19,4 @@ public class Address extends CommonAddress {
     public Address() {
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id='" + id + '\'' +
-                ", country='" + country + '\'' +
-                '}';
-    }
 }
