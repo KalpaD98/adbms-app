@@ -37,11 +37,11 @@ public class RetailerController {
     }
 
     @PostMapping("add")
-    public String addRetailer(@Valid Retailer retailer, BindingResult result, Model model) {
+    public String addRetailer(Retailer retailer, Address address, ShippingAddress shippingAddress, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "retailer/add-retailer";
         }
-
+        //TODO : err
         retailerRepository.save(retailer);
         return "redirect:";
     }

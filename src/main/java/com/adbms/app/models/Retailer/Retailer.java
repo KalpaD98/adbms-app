@@ -3,7 +3,6 @@ package com.adbms.app.models.Retailer;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,31 +17,33 @@ public class Retailer {
     @Setter
     private String id;
 
-    @Getter
-    @Setter
+
     @NotBlank(message = "First name cannot be empty")
     @Min(3)
+    @Getter
+    @Setter
     private String name;
 
     @Email(message = "Email should be valid")
-    @Indexed(unique = true)
+    @Min(3)
     @Getter
     @Setter
-    @Min(3)
     private String email;
 
-//    @Getter
-//    @Setter
-//    @NotBlank
-//    @DBRef
-//    private Address address;
-//
-//    @Getter
-//    @Setter
-//    @NotBlank
-//    @DBRef
-//    private ShippingAddress shippingAddress;
+    @Getter
+    @Setter
+    @NotBlank
+    private Address address;
+
+
+    @NotBlank
+    @Getter
+    @Setter
+    private ShippingAddress shippingAddress;
+
 
     public Retailer() {
+        address = new Address();
+        shippingAddress = new ShippingAddress();
     }
 }
