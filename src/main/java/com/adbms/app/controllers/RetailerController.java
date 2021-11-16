@@ -31,6 +31,13 @@ public class RetailerController {
         return "retailer/retailers";
     }
 
+    @GetMapping("/{id}")
+    public String getRetailer(Model model, @PathVariable("id") String id) {
+        model.addAttribute("retailer", retailerRepository.findById(id));
+        return "retailer/view-retailer";
+    }
+
+
     @GetMapping("/add-retailer")
     public String showAddForm(Retailer retailer, Address address, ShippingAddress shippingAddress) {
         return "retailer/add-retailer";
