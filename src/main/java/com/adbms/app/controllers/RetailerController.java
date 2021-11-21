@@ -1,6 +1,6 @@
 package com.adbms.app.controllers;
 
-import com.adbms.app.models.Retailer.Address;
+import com.adbms.app.models.shared.Address;
 import com.adbms.app.models.Retailer.Retailer;
 import com.adbms.app.models.Retailer.ShippingAddress;
 import com.adbms.app.repositories.RetailerRepository;

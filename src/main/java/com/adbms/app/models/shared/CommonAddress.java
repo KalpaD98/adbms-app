@@ -1,4 +1,4 @@
-package com.adbms.app.models.Retailer;
+package com.adbms.app.models.shared;
 
 import lombok.Getter;
 import lombok.Setter;
