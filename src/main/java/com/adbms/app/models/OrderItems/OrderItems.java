@@ -1,6 +1,5 @@
 package com.adbms.app.models.OrderItems;
 
-import com.adbms.app.models.Sku.Sku;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -30,7 +29,7 @@ public class OrderItems {
     @NotBlank(message = "Quantity cannot be empty")
     @Getter
     @Setter
-    private int quantity;
+    private double quantity;
 
     @NotBlank
     @Getter
