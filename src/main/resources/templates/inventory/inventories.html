@@ -49,8 +49,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <a class="navbar-brand" href="/">System</a>
-        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler"
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-target="#navbarResponsive"
                 data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -65,8 +64,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/retailers">Retailers</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orders">Orders</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/inventories">Inventories</a>
+                    <a class="nav-link" href="/inventories">Inventory</a>
                 </li>
             </ul>
         </div>
@@ -98,8 +100,7 @@
                             <tr th:each="Inventory : ${inventories}">
                                 <td th:text="${Inventory.inventoryId}"></td>
                                 <td>
-                                    <a class="nav-link" th:href="@{/inventories/{id}(id=${Inventory.id})}"
-                                       th:text="${Inventory.name}">
+                                    <a th:text="${Inventory.name}">
                                     </a>
                                 </td>
                                 <td th:text="${Inventory.features}"></td>

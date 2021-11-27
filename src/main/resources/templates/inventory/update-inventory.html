@@ -60,9 +60,17 @@
 </nav>
 
 <div class="container my-5">
-    <a class="navbar-brand" href="/Inventories">back</a>
-
-    <h3> Update Inventory</h3>
+    <div class="row col-md-6">
+        <div class="column">
+            <a class="navbar-brand" href="/inventories"><svg xmlns="http://www.w3.org/2000/svg" width="30"  fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+            </svg></a>
+        </div>
+        <div class="column">
+            <h3>Update Inventory</h3>
+        </div>
+    </div>
+    <br>
     <div class="card">
         <div class="card-body">
             <div class="col-md-8">
@@ -70,10 +78,9 @@
                       th:object="${inventory}">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <p class="col-form-label"><b>Manager Details</b></p>
                             <label class="col-form-label" for="inventoryId">Inventory ID</label>
                             <input class="form-control" id="inventoryId"
-                                   placeholder="inventoryId" th:field="*{inventoryId}"
+                                   placeholder="inventory Id" th:field="*{inventoryId}"
                                    type="text">
                             <span
                                     class="text-danger" th:errors="*{inventoryId}"
@@ -82,9 +89,9 @@
                         </div>
 
                         <div class="form-group col-md-8">
-                            <label class="col-form-label" for="name">Name</label>
+                            <label class="col-form-label" for="name">Item</label>
                             <input class="form-control" id="name"
-                                   placeholder="Email" th:field="*{name}"
+                                   placeholder="Item" th:field="*{name}"
                                    type="text">
                             <span
                                     class="text-danger" th:errors="*{name}"
@@ -96,7 +103,7 @@
                         <div class="form-group col-md-8">
                             <label class="col-form-label" for="features">Features</label>
                             <input class="form-control" id="features"
-                                   placeholder="Email" th:field="*{features}"
+                                   placeholder="Features" th:field="*{features}"
                                    type="text">
                             <span
                                     class="text-danger" th:errors="*{features}"
@@ -114,6 +121,8 @@
                                 <option value="Silk">Silk</option>
                                 <option value="Spandex">Spandex</option>
                                 <option value="Nylon">Nylon</option>
+                                <option value="Button">Button</option>
+
                             </select>
                         </div>
 
