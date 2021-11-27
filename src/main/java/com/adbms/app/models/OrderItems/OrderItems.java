@@ -21,24 +21,22 @@ public class OrderItems {
     @Setter
     private String sku;
 
-    @NotBlank(message = "Item name cannot be empty")
     @Min(3)
     @Getter
     @Setter
     private String itemName;
 
-    @NotBlank(message = "Quantity cannot be empty")
     @Getter
     @Setter
     private double quantity;
 
-    @NotBlank
     @Getter
     @Setter
     private double unitPrice;
 
-    public OrderItems() {
-        sku = new Sku().getSku();
-        unitPrice = new Sku().getUnitPrice();
-    }
+//    public OrderItems() {
+//
+//        sku = new Sku().getSku();
+//        unitPrice = new Sku().getUnitPrice();
+//    }
 }
