@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Add Order Item</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+
+
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/index">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/others">Others</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="/skus">SkuInventory</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="/orderItems">Order Items</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container my-5">
+    <h3>Add Order Item</h3>
+    <form action="#" method="post" th:action="@{/orderItems/add}" th:object="${orderItemForm}">
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label class="col-form-label" for="brand">Item Name</label>
+                <input class="form-control" id="brand"
+                       placeholder="Rio Biscuit" th:field="*{itemName}"
+                       type="text">
+                <span
+                        class="text-danger" th:errors="*{itemName}"
+                        th:if="${#fields.hasErrors('itemName')}">
+                </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label" for="material">Quantity</label>
+                <input class="form-control" id="material"
+                       placeholder="10" th:field="*{quantity}"
+                       type="text">
+                <span
+                        class="text-danger" th:errors="*{quantity}"
+                        th:if="${#fields.hasErrors('quantity')}">
+                </span>
+            </div>
+        </div>
+
+        <div class="col">
+            <input class="btn btn-primary" type="submit" value="Add Item">
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>
