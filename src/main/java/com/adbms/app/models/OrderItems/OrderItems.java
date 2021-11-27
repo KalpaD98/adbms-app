@@ -1,5 +1,6 @@
 package com.adbms.app.models.OrderItems;
 
+import com.adbms.app.models.Sku.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
