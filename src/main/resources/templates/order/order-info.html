@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order | Create</title>
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <link th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}" th:rel="stylesheet"/>
+    <link th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}" th:rel="stylesheet"/>
+    <link th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{webjars/font-awesome/5.11.2/css/all.css} " th:rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Home
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/orders}">Order</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div style="text-align: center;"><h1>Order Details</h1></div>
+    </div>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <form th:action="@{/orders/update/{id}(id=${order.getId()})}" method="post" th:object="${order}" >
+                    <div class="container">
+                        <h4>Order Information</h4>
+                        <br />
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <fieldset disabled class="col">
+                                    <label for="retailerName" class="form-label">Retailer Name</label>
+                                    <input type="text" class="form-control" id="retailerName" th:value="${retailer.get().getName()}"/>
+                                </fieldset>
+                            </div>
+                            <div class="col">
+                                <label for="orderStatus" class="form-label">Order Status</label>
+                                <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        th:field="*{status}"
+                                        id="orderStatus">
+                                    <option
+                                            th:value="${orderStatus}"
+                                            th:text="${orderStatus}"
+                                            th:each="orderStatus : ${orderStatusList}"></option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container">
+                        <h4>Shipment Information</h4>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <label for="carrier" class="form-label">Carrier</label>
+                                <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        th:field="*{shipment.carrier}"
+                                        id="carrier">
+                                    <option value="" selected disabled>Select shipping carrier</option>
+                                    <option value="APM-Maersk">APM-Maersk</option>
+                                    <option value="MSC">MSC</option>
+                                    <option value="CMA-CGM">CMA-CGM</option>
+                                    <option value="Hapag-Lloyd">Hapag-Lloyd</option>
+                                    <option value="ONE">ONE</option>
+                                    <option value="Evergreen Line">Evergreen Line</option>
+                                    <option value="Hyundai Merchant Marine">Hyundai Merchant Marine</option>
+                                </select>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container">
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <h5>Destination Address</h5>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationStreet1" class="form-label">Street 1</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationStreet1"
+                                                th:value="${retailer.get().getAddress().getStreet1()}" />
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationStreet2" class="form-label">Street 2</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationStreet2"
+                                                th:value="${retailer.get().getAddress().getStreet2()}"/>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationCity" class="form-label">City</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationCity"
+                                                th:value="${retailer.get().getAddress().getCity()}"/>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationDistrict" class="form-label">District</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationDistrict"
+                                                th:value="${retailer.get().getAddress().getDistrict()}"/>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationCountry" class="form-label">Country</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationCountry"
+                                                th:value="${retailer.get().getAddress().getCountry()}"/>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <fieldset disabled>
+                                        <label for="destinationZip" class="form-label">Zip Code</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="destinationZip"
+                                                th:value="${retailer.get().getAddress().getZip()}"/>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5>Origin Address</h5>
+                                <div class="row">
+                                    <div>
+                                        <label for="originStreet1" class="form-label">Street 1</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="originStreet1"
+                                                th:field="*{shipment.origin.street1}" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label for="addressStreet2" class="form-label">Street 2</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="addressStreet2"
+                                                th:field="*{shipment.origin.street2}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label for="originCity" class="form-label">City</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="originCity"
+                                                th:field="*{shipment.origin.city}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label for="originDistrict" class="form-label">District</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="originDistrict"
+                                                th:field="*{shipment.origin.district}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label for="originCountry" class="form-label">Country</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="originCountry"
+                                                th:field="*{shipment.origin.country}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <label for="originZip" class="form-label">Zip Code</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="originZip"
+                                                th:field="*{shipment.origin.zip}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="container">
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-warning">Update Order Details</button>
+                        </div>
+                    </div>
+                </form>
+                <br />
+
+                <!--
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body">
+                            <i href="#" class="btn btn-primary">Add items</i>
+                            <br />
+                            <br />
+                            <div class="container" th:if="${itemList.isEmpty()}">
+                                No any items exist in the order
+                            </div>
+                            <br />
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Order Status</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                                </thead>
+                                <tbody th:if="${!itemList.isEmpty()}">
+                                <tr th:each="order : ${itemList}">
+                                    <th scope="row">1</th>
+                                    <td th:text="${order.getRetailerId()}"></td>
+                                    <td th:text="${order.getStatus()}"></td>
+                                    <td th:text="${order.getDate()}"></td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">
+                                            <i class="far fa-edit"></i>
+                                        </button></td>
+                                    <td>
+                                        <form action="#" th:action="" th:method="get">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="#" th:action="" th:method="get">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

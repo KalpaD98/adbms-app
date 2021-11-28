@@ -1,9 +1,8 @@
-package com.adbms.app.models.Retailer;
+package com.adbms.app.models.shared;
 
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;

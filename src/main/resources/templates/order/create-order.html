@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order | Create</title>
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <link th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}" th:rel="stylesheet"/>
+    <link th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}" th:rel="stylesheet"/>
+    <link th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{webjars/font-awesome/5.11.2/css/all.css} " th:rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Home
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/orders}">Order</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div style="text-align: center;"><h1>Create Order</h1></div>
+    </div>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <form th:action="@{/orders/create-order}" method="post" th:object="${orderForm}" >
+                    <div class="container">
+                        <h4>Order Information</h4>
+                        <br />
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <label for="retailerName" class="form-label">Retailer Name</label>
+                                <select
+                                    class="form-select"
+                                    aria-label="Default select example"
+                                    id="retailerName"
+                                    th:field="*{retailerId}">
+                                    <option value="" selected disabled>Select Retailer</option>
+                                    <option
+                                            th:value="${retailer.getId()}"
+                                            th:text="${retailer.getName()}"
+                                            th:each="retailer : ${retailerList}"></option>
+                                </select>
+                            </div>
+                            <fieldset th:field="*{status}" disabled class="col">
+                                <label for="orderStatus" class="form-label">Order Status</label>
+                                <input type="text" class="form-control" id="orderStatus" th:value="${'PENDING'}"/>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container">
+                        <h4>Shipment Information</h4>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <label for="carrier" class="form-label">Carrier</label>
+                                <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        th:field="*{shipment.carrier}"
+                                        id="carrier">
+                                    <option value="" selected disabled>Select shipping carrier</option>
+                                    <option value="APM-Maersk">APM-Maersk</option>
+                                    <option value="MSC">MSC</option>
+                                    <option value="CMA-CGM">CMA-CGM</option>
+                                    <option value="Hapag-Lloyd">Hapag-Lloyd</option>
+                                    <option value="ONE">ONE</option>
+                                    <option value="Evergreen Line">Evergreen Line</option>
+                                    <option value="Hyundai Merchant Marine">Hyundai Merchant Marine</option>
+                                </select>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container">
+                        <h5>Origin Address</h5>
+                        <div class="row row-cols-2">
+                            <div class="row">
+                                <div>
+                                    <label for="originStreet1" class="form-label">Street 1</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="originStreet1"
+                                            th:field="*{shipment.origin.street1}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="addressStreet2" class="form-label">Street 2</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="addressStreet2"
+                                            th:field="*{shipment.origin.street2}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="originCity" class="form-label">City</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="originCity"
+                                            th:field="*{shipment.origin.city}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="originDistrict" class="form-label">District</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="originDistrict"
+                                            th:field="*{shipment.origin.district}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="originCountry" class="form-label">Country</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="originCountry"
+                                            th:field="*{shipment.origin.country}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <label for="originZip" class="form-label">Zip Code</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="originZip"
+                                            th:field="*{shipment.origin.zip}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <p>Please add required items after creating the order ...</p>
+                    <div class="container">
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">Create Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
