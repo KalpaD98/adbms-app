@@ -114,7 +114,7 @@
                                 <td th:text="${retailer.address.country}"></td>
                                 <td><a class="btn btn-primary" th:href="@{/retailers/edit/{id}(id=${retailer.id})}"><i
                                         class="far fa-edit"></i></a></td>
-                                <td><a class="btn btn-primary" th:href="@{/retailers/delete/{id}(id=${retailer.id})}"><i
+                                <td><a class="btn btn-danger" th:href="@{/retailers/delete/{id}(id=${retailer.id})}"><i
                                         class="fas fa-trash-alt"></i>
                                 </a></td>
                             </tr>
