@@ -1,7 +1,6 @@
 package com.adbms.app.models.Supplier;
 
-import com.adbms.app.models.Retailer.Address;
-import com.adbms.app.models.Retailer.ShippingAddress;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
