@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Update User</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+
+
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="imgbox">
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">System</a>
+        <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarResponsive"
+                data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/index">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/suppliers">Retailers</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/suppliers">Suppliers</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <a class="navbar-brand" href="/suppliers">back</a>
+
+    <h3> Update Supplier</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" method="post" th:action="@{/suppliers/update/{id}(id=${supplier.id})}"
+                      th:object="${supplier}">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <p class="col-form-label"><b>Manager Details</b></p>
+                            <label class="col-form-label" for="name">Supplier Name</label>
+                            <input class="form-control" id="name"
+                                   placeholder="Name" th:field="*{name}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{name}"
+                                    th:if="${#fields.hasErrors('name')}">
+                            </span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="email">Email</label>
+                            <input class="form-control" id="email"
+                                   placeholder="Email" th:field="*{email}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{email}"
+                                    th:if="${#fields.hasErrors('email')}">
+
+                            </span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="address">Address</label>
+                            <input class="form-control" id="address"
+                                   placeholder="Email" th:field="*{address}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{address}"
+                                    th:if="${#fields.hasErrors('address')}">
+
+                            </span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="material">Material</label>
+                            <input class="form-control" id="material"
+                                   placeholder="Email" th:field="*{material}"
+                                   type="text">
+                            <span
+                                    class="text-danger" th:errors="*{material}"
+                                    th:if="${#fields.hasErrors('material')}">
+
+                            </span>
+                        </div>
+
+                        <div>
+                            <label class="col-form-label" for="area">Area</label>
+                            <select class="form-control" name="area" id="area" th:field="*{area}">
+                                <option value="Domestic">Domestic</option>
+                                <option value="Foreign">Foreign</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="details">Details</label>
+                            <textarea class="form-control" th:field="*{details}" id="details" name="details" rows="4"
+                                      cols="50">
+                            </textarea>
+                            <span
+                                    class="text-danger" th:errors="*{details}"
+                                    th:if="${#fields.hasErrors('details')}">
+                            </span>
+                        </div>
+                    </div>
+
+                    </div>
+                    
+
+                            <div class="col">
+                                <input class="btn btn-primary" type="submit" value="Update Supplier">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

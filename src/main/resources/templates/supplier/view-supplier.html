@@ -7,6 +7,7 @@
     <title>Add Retailer</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
+
     <link crossorigin="anonymous"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
           integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
@@ -32,6 +33,8 @@
 
 <!-- Navigation -->
 
+<div class="imgbox">
+</div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <a class="navbar-brand" href="/">System</a>
@@ -49,10 +52,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/others">Others</a>
+                    <a class="nav-link" href="/suppliers">Retailers</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/trains">Retailers</a>
+                    <a class="nav-link" href="/suppliers">Suppliers</a>
                 </li>
             </ul>
         </div>
@@ -62,69 +65,51 @@
 <div class="container my-2">
     <div class="card">
         <div class="card-body">
-            <div class="container my-5 " th:object="${retailer}">
+            <div class="container my-5 " th:object="${supplier}">
+                <div class="container">
+                    <a class="navbar-brand" href="/suppliers">back</a>
+                    <h3>Supplier Details</h3>
+                </div>
 
-                <h1 th:text="${retailer.get().name}"></h1>
-                
-                <table class="table">
-                    <thead class="thead-dark">
+
+
+                <br>
+
+                <table class="table table-striped">
+                    <tbody>
                     <tr>
-                        <th scope="col">Retailer</th>
+                        <th scope="col">Supplier</th>
+                        <td th:text="${supplier.get().name}"></td>
+                    </tr>
+                    <tr>
+
                         <th scope="col">Email</th>
-                        <th scope="col">Country</th>
+                        <td th:text="${supplier.get().email}"></td>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr>
-                        <td th:text="${retailer.get().name}"></td>
-                        <td th:text="${retailer.get().email}"></td>
-                        <td th:text="${retailer.get().address.country}"></td>
-
-                    </tr>
-                    </tbody>
-                </table>
-
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Attribute</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Shipping Address</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Street 1</th>
-                        <td th:text="${retailer.get().address.street1}"></td>
-                        <td th:text="${retailer.get().shippingAddress.street1}"></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Street 2</th>
-                        <td th:text="${retailer.get().address.street2}"></td>
-                        <td th:text="${retailer.get().shippingAddress.street2}"></td>
+                        <td th:text="${supplier.get().address}"></td>
 
 
                     </tr>
                     <tr>
-                        <th scope="row">City</th>
-                        <td th:text="${retailer.get().address.city}"></td>
-                        <td th:text="${retailer.get().shippingAddress.city}"></td>
+                        <th scope="col">Material</th>
+                        <td th:text="${supplier.get().material}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Area</th>
+                        <td th:text="${supplier.get().area}"></td>
 
                     </tr>
                     <tr>
-                        <th scope="row">District</th>
-                        <td th:text="${retailer.get().address.district}"></td>
-                        <td th:text="${retailer.get().shippingAddress.district}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Zip</th>
-                        <td th:text="${retailer.get().address.zip}"></td>
-                        <td th:text="${retailer.get().shippingAddress.zip}"></td>
+                        <th scope="col">Details</th>
 
+                        <td th:text="${supplier.get().details}"></td>
                     </tr>
                     </tbody>
+
                 </table>
+
             </div>
         </div>
     </div>
